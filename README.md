@@ -1,40 +1,42 @@
 
-# Image Gallery Project
+# Single Page - HTML Only
 
-This project involves designing and coding an image gallery that displays a minimum of 9 thumbnail images. Each thumbnail links to a full-sized version, and the layout should be responsive and visually styled.
-
+Students will create a single webpage on ___.
 ---
 
 <details>
 <summary><strong>Project Overview</strong></summary>
 
-Students will design an image gallery project that showcases a minimum of 9 image thumbnails related to a theme, and these thumbnails link to a full-sized image.
+Students will code an HTML page (`index.html`) and use markup to structure a page on ___.
 
-The design should be a grid of images styled using fonts, colors, borders, and other CSS properties.
+The page should have a minimum of 3 sections each with a section header, paragraphs, and images. In one or more of the sections, the student needs to create at least two different lists each with at least 3 list items.
 
 </details>
 
 ---
 <details>
-<summary><strong>Setup Instructions</strong></summary>
+<summary><strong>VS Code Setup Instructions</strong></summary>
 
-1. Place all project files (HTML, CSS, images) into the `simple_html_page` folder.
-2. Clone the project: `git clone`
-3. Open in VS Code (`Image-Gallery-Project.code-workspace`)
-4. Open the terminal (View > New Terminal)
-5. Install the Python extension for VS Code
-6. Run `poetry shell` in the terminal
+1. Make sure you have python poetry installed (open the Software Center and look for it in apps)
+2. Open Command prompt by clicking in the search window and typing `cmd`
+3. Type `poetry --version` - if it gave you a version, you are ready. If not, get the teacher to show you.
+4. Make sure you add the Python Extension (the one with the Microsoft seal)
+5. Open the terminal (View > New Terminal)
+6. Run `poetry env activate` in the terminal
 7. Note your virtual environment name
 8. Open the Command Palette (`Ctrl + Shift + P`)
 9. Select the Python interpreter (look for the Poetry environment)
 10. Run `poetry update`
-11. Run `pytest` to test your code
-12. If needed, configure tests via the Testing icon
-13. Place your content in the `image_gallery` folder
-14. Store all images (full-size and thumbnails)
-15. Choose a theme for your gallery
-16. Record your final product showing responsiveness
-17. Commit and push changes regularly
+11. Run `pytest` to test your code - it will give you an error (that's to be expected)
+12. Create a file named `index.html` into the `project` folder
+13. Follow in class instructions on how to code your html file.
+14. Review the [Project Requirements](project-requirements) for the assignment
+15. Commit and push changes regularly
+16. As you work, try typing `pytest` in the terminal to see what tests you are passing and which ones you are failing
+17. If you don't know what a failed test means, talk to your teacher to help you work through it.
+18. To get a 3/4 proficient in HTML, you need to pass all `test_html.py` tests.
+19. To get a 4/4 exceeds, you need to pass all tests (`test_html.py` and `test_html_exceeds.py`).
+20. Make sure you push all commits to receive a score.
 
 </details>
 
@@ -46,36 +48,25 @@ The design should be a grid of images styled using fonts, colors, borders, and o
 ### Folder and File Structure
 - Create a single web page named `index.html`
 - Create a folder titled `images` (all lowercase)
-- Include at least 18 images:
-  - 9 full-sized images
-  - 9 thumbnails (max width: 450px)
+- Include at least 3 images using meaningful names and no spaces.
 
 ### HTML Requirements
-- A single HTML file with:
-  - All standard HTML5 tags (`DOCTYPE`, `html`, `head`, `title`, `body`)
-  - A `header` with a `h1` title
-  - A `main` section containing at least 9 `figure` elements
-  - Each `figure` includes:
-    - A thumbnail image with `alt` text
-    - A link to the full-sized image
+A single HTML file with:
+- All standard HTML5 tags (`DOCTYPE`, `html`, `head`, `title`, `body`)
+- An `h1` tag for your title (there can be only one `h1` tag per page)
+- At least 3 `h2` tags for your section headers (subtitles)
+- A minimum of 6 `p` tags (2 for each section)
+- At least 2 lists (`ul` or `ol`) with at least 3 list items per list
+- At least 3 links to external websites (you can do this in your credits for the images as well as citations for your content)
+- At least 3 vocabulary terms in bold (`b` or `strong`)
+    - NOTE: do not make any headings bold (they already are bold)
+    - You will fail tests if you put a `b` or `strong` tag inside of a heading tag (`<h1>`, `<h2>`,...and so on>)
+- At least 3 `figure` tags, each that includes:
+    - A relatively small (no wider than 400px) image with an `alt` text
     - A `figcaption` with a `cite` tag for image credit (linked if not self-taken)
 
-### CSS Requirements
-- Use at least one stylesheet or a `<style>` tag
-- Font pairing
-- Background and text colors with proper contrast:
-  - AAA rating for body text
-  - AA rating acceptable for headings
-- Use `flex` layout for the container
-- Style `figure` elements with `margin`, `border`, `padding`, and `background-color`
-
-### Design Requirements
-- High contrast and readability
-- Thematically consistent images and styling
-- Responsive layout that works across all screen sizes
-
 ### Validity Requirements
-- No HTML or CSS errors (validated via W3C tools)
+- No HTML errors (validated via W3C tools)
 
 </details>
 
@@ -85,10 +76,8 @@ The design should be a grid of images styled using fonts, colors, borders, and o
 <summary><strong>Submission Requirements</strong></summary>
 
 - All changes must be committed and pushed to the repository
-- Submit a recording showing the gallery at various viewport widths
-- I will be looking for the following design recommendations:
-    + your ***layout remains intact*** at all screen widths
-    + there are ***no horizontal scrollbars*** (unless the screen is narrower than a single figure)
+- Take one or more screen shots of your web page and upload them as files 
+- I will be looking at your content as well.
 </details>
 
 ---
