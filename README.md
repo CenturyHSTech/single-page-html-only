@@ -1,15 +1,15 @@
 
 # Single Page - HTML Only
 
-Students will create a single webpage on ___.
+Students will create a single webpage on a topic of your choice with headers, paragraphs, text formatting, links, and text formatting.
 ---
 
 <details>
 <summary><strong>Project Overview</strong></summary>
 
-Students will code an HTML page (`index.html`) and use markup to structure a page on ___.
+Students will code an HTML page (`index.html`) and use markup to structure a page on a topic of your choice.
 
-The page should have a minimum of 3 sections each with a section header, paragraphs, and images. In one or more of the sections, the student needs to create at least two different lists each with at least 3 list items.
+The page should have a minimum of 3 sections each with a section header, paragraphs, links, and lists. In one or more of the sections, the student needs to create at least two different lists each with at least 3 list items.
 
 </details>
 
@@ -47,8 +47,6 @@ The page should have a minimum of 3 sections each with a section header, paragra
 
 ### Folder and File Structure
 - Create a single web page named `index.html`
-- Create a folder titled `images` (all lowercase)
-- Include at least 3 images using meaningful names and no spaces.
 
 ### HTML Requirements
 A single HTML file with:
@@ -57,16 +55,22 @@ A single HTML file with:
 - At least 3 `h2` tags for your section headers (subtitles)
 - A minimum of 6 `p` tags (2 for each section)
 - At least 2 lists (`ul` or `ol`) with at least 3 list items per list
-- At least 3 links to external websites (you can do this in your credits for the images as well as citations for your content)
-- At least 3 vocabulary terms in bold (`b` or `strong`)
-    - NOTE: do not make any headings bold (they already are bold)
-    - You will fail tests if you put a `b` or `strong` tag inside of a heading tag (`<h1>`, `<h2>`,...and so on>)
-- At least 3 `figure` tags, each that includes:
-    - A relatively small (no wider than 400px) image with an `alt` text
-    - A `figcaption` with a `cite` tag for image credit (linked if not self-taken)
+- At least 3 links to external websites
+- A variety of text formatting tags such as `strong`, `em`, `code`, `cite`
+    * for bold and italic text, be sure to pick good keywords to emphasize.
+    * a proficient score will include at least 4 examples of these tags beign properly used.
 
 ### Validity Requirements
 - No HTML errors (validated via W3C tools)
+
+### CSS Requirements
+- No style attributes are allowed
+- Either use a `style` tag in the head or link to an external stylesheet
+- Apply colors (text and background color) to the entire page (use the `body` selector)
+- Choose colors from a consistent color palette (I recommend getting one from [Coolors.co Trending Palettes](https://coolors.co/palettes/trending))
+- Make sure any hyperlink is readable
+- Make sure your colors pass the [webAIM Color Contrast Checker](https://webaim.org/resources/contrastchecker/) at a AAA level for Normal text
+    * **NOTE**: your `h1` tag could fail for normal as long as it passes for Large text
 
 </details>
 
