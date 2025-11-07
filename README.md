@@ -1,4 +1,3 @@
-
 # Single Page - HTML Only
 
 Students will create a single webpage on a topic of your choice with headers, paragraphs, text formatting, links, and text formatting.
