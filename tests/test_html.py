@@ -6,8 +6,8 @@ import file_clerk.clerk as clerk
 from webcode_tk import html_tools as html
 from webcode_tk import validator_tools as validator
 
-project_dir = "project/"
-all_html_files = html.get_all_html_files(project_dir)
+project_path = "project/"
+all_html_files = html.get_all_html_files(project_path)
 
 # List of required elements (per web page)
 required_elements = [("doctype", 1),
@@ -25,17 +25,17 @@ min_required_elements = [
     ("strong or em or cite or code", 4)]
 
 exact_number_of_elements = html.get_number_of_elements_per_file(
-    project_dir, required_elements
+    project_path, required_elements
 )
 min_number_of_elements = html.get_number_of_elements_per_file(
-    project_dir, min_required_elements
+    project_path, min_required_elements
 )
-html_validation_results = validator.get_project_validation(project_dir)
+html_validation_results = validator.get_project_validation(project_path)
 
 
 @pytest.fixture
 def html_files():
-    html_files = html.get_all_html_files(project_dir)
+    html_files = html.get_all_html_files(project_path)
     return html_files
 
 

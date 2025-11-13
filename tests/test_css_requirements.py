@@ -11,27 +11,9 @@ from webcode_tk import contrast_tools as contrast
 project_path = "project/"
 html_files = html.get_all_html_files(project_path)
 styles_by_html_files = css.get_styles_by_html_files(project_path)
-global_color_rules = css.get_global_color_report(project_path)
 
-global_color_contrast_results = []
-for rule in global_color_rules:
-    expected = "pass: the global colors (applied to html or body) meet contrast requirements"
-    if "fail" in rule:
-        if "pass:" in rule:
-            result = rule.split("pass:")[1]
-            result = f"fail: {result.strip()}"
-        else:
-            result = rule
-    elif rule.count("pass") == 2:
-        result = expected
-    else:
-        result = "fail: no colors were applied globally"
-        global_color_contrast_results = [(result, expected)]
-        break
-    
-    global_color_contrast_results.append((result, expected))
+color_contrast_results = contrast.generate_contrast_report(project_path)
 no_style_attribute_tests = []
-
 
 def set_style_attribute_tests(path):
     results = []
@@ -49,35 +31,6 @@ def set_style_attribute_tests(path):
             result = expected
         results.append((result, expected))
     return results
-
-
-def prep_contrast_results(project_folder=project_path, level="AAA"):
-    results = contrast.generate_contrast_report(project_folder, "AAA")
-    output = []
-    filename = clerk.get_file_name(project_folder)
-
-    # until contrast toosl works, check for global colors
-    global_color_results = css.get_global_color_report(project_folder, level)
-    color_details = css.get_project_color_contrast_report(project_folder)
-    for file in html_files:
-        color_stuff = css.get_all_color_rules(file)
-    from_contrast_tools = contrast.generate_contrast_report(project_folder)
-    passes_global_contrast = True
-    for result in global_color_results:
-        if "fail" in result:
-            passes_global_contrast = False
-            output.append(("fail", f"{filename} fails global color contrast"))
-    for result in results:
-        split_result = result.split(":")
-        if len(split_result) == 2:
-            pass_fail, message = split_result
-        else:
-            pass_fail = split_result[0]
-            message = "".join(split_result[1:]).strip()
-        if filename in result and not passes_global_contrast:
-            continue
-        output.append((pass_fail, message))
-    return output
 
 
 def get_unique_font_families(project_folder):
@@ -154,7 +107,6 @@ def applies_css(styles_by_html_files: list) -> list:
         results.append((result, expected))
     return results
 
-contrast_results = prep_contrast_results(project_path)
 font_families_tests = get_unique_font_families(project_path)
 font_rules_results = get_font_rules_data(font_families_tests)
 font_selector_results = get_font_selector_data(font_families_tests)
@@ -200,17 +152,9 @@ def test_files_for_style_attribute_data(result, expected):
     assert result == expected
 
 
-@pytest.mark.parametrize("result, expected", global_color_contrast_results)
-def test_files_for_globally_applied_color_contrast(result, expected):
-    assert result == expected
-
-
-@pytest.mark.parametrize("passes,message",
-                         contrast_results)
-def test_files_for_contrast_results(passes, message):
-    result = f"{passes}:{message}"
-    expected = f"pass:{message}"
-    assert result == expected
+@pytest.mark.parametrize("result", color_contrast_results)
+def test_files_for__color_contrast(result):
+    assert "pass:" in result[:5]
 
 
 @pytest.mark.parametrize("file,passes_font_families", font_selector_results)
@@ -220,19 +164,3 @@ def test_files_for_2_font_families_max(file, passes_font_families):
 
 def test_link_color_details_for_links_targeted(link_color_details):
     assert link_color_details
-
-
-@pytest.mark.parametrize("file,sel,goal,col,bg,ratio,passes",
-                         link_colors)
-def test_link_color_details_for_passing_color_contrast(file, sel, goal,
-                                                       col, bg, ratio,
-                                                       passes):
-    filename = file.split("/")[-1]
-    if passes:
-        results = f"Color contrast for {sel} in {filename} passes at {ratio}"
-        expected = results
-        assert results == expected
-    else:
-        results = f"Color contrast for {sel} in {filename} fails at {ratio}"
-        expected = f"Color contrast for {sel} in {filename} passes."
-        assert results == expected
